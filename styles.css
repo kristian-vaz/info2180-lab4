@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#container {
+    text-align: center;
+}
+
+#search-form {
+    text-align: center;
+}
+
+#search-input {
+    width: 60%;
+    height: 20px;
+    padding: 10px;
+    border: 2px solid #1821b5;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#search-button {
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #1821b5;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background-color: #000000;
+}
