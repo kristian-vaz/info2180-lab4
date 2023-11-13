@@ -1,5 +1,7 @@
 <?php
 
+$searchQuery = $_GET['query'];
+
 $superheroes = [
   [
       "id" => 1,
@@ -63,10 +65,26 @@ $superheroes = [
   ], 
 ];
 
-?>
+$superhero = array_filter($superheroes, function($hero) use ($searchQuery) {
+    return strcasecmp($hero['name'], $searchQuery) === 0 || strcasecmp($hero['alias'], $searchQuery) === 0;
+});
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+// Check if a superhero was found
+if (!empty($superhero)) {
+    // Display the details of the found superhero
+    $superhero = array_values($superhero)[0];
+    echo "<h3>" . htmlspecialchars($superhero['alias']) . "</h3>";
+    echo "<h4>" . htmlspecialchars($superhero['name']) . "</h4>";
+    echo "<p>" . htmlspecialchars($superhero['biography']) . "</p>";
+} else {
+    // If no superhero was found, return a "Superhero not found" message
+    echo "<p>Superhero not found</p>";
+}
+
+// Display the list of superheroes
+echo "<ul>";
+foreach ($superheroes as $superhero) {
+    echo "<li>" . htmlspecialchars($superhero['alias']) . "</li>";
+}
+echo "</ul>";
+?>
